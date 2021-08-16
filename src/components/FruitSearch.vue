@@ -1,21 +1,21 @@
 <template>
   <input type="text" name="search-box" @keyup="search" />
   <template v-if="!state.noSearch && state.searchResults.length > 0">
-  <div class="search-item" v-for="(result, index) in state.searchResults" :key="index">
-      <hr v-if="index > 0">
-      <p>{{result}}</p>
-  </div>
+      <div class="search-item" v-for="(result, index) in state.searchResults" :key="index">
+          <hr v-if="index > 0" />
+          <p>{{result}}</p>
+      </div>
   </template>
-    <template v-else-if="!state.noSearch">
-  <div class="search-item">
-      <p>Sorry. No Results.</p>
-  </div>
+  <template v-else-if="!state.noSearch">
+      <div class="search-item">
+          <p>Sorry. No Results.</p>
+      </div>
   </template>
 </template>
 
 <script>
-import {reactive} from 'vue';
 import axios from 'axios';
+import {reactive} from 'vue';
 
 export default {
     name: 'FruitSearch',
@@ -40,12 +40,12 @@ export default {
             }).catch(err => {throw new Error(err)});
         }
 
-        return{search, state}
+        return {search, state}
     }
 }
 </script>
 
-<style>
+<style scoped>
     input[name="search-box"]{
         display: block;
         margin: 2rem auto;
